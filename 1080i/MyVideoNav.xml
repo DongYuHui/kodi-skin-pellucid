@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
     <defaultcontrol always="true">9999</defaultcontrol>
-    <onload condition="Skin.hassetting(stopVideoOnMenu) + !Player.HasAudio">PlayerControl(stop)</onload>
+    <onload condition="Skin.HasSetting(stopVideoOnMenu) + !Player.HasAudio">PlayerControl(stop)</onload>
     <onload>Skin.SetString(recentitems,video)</onload>
 	<onload condition="String.Contains(container.folderpath,plugin://)">Container.SetViewMode(54)</onload>
     <include>fadeInOut</include>

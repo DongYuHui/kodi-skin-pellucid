@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+    <defaultcontrol always="true">602</defaultcontrol>
+    <include>fadeInOut</include>
+    <controls>
+        <control type="button">
+            <posx>0</posx>
+            <posy>0</posy>
+            <width>1920</width>
+            <height>1080</height>
+            <texturefocus></texturefocus>
+            <texturenofocus></texturenofocus>
+            <onclick>Action(Close)</onclick>
+        </control>
+        <control type="group">
+            <posx>col-2-begin</posx>
+            <posy>row-21-begin</posy>
+            <include>modalDialogInOutVertical</include>
+            <control type="image">
+                <posx>0</posx>
+                <posy>0</posy>
+                <width>22-col</width>
+                <height>4-row</height>
+                <texture>colors/black.png</texture>
+                <colordiffuse>overlay</colordiffuse>
+                <aspectratio>stretch</aspectratio>
+            </control>
+            <control type="grouplist">
+                <posx>24</posx>
+                <posy>1-row</posy>
+                <width>21-col</width>
+                <height>2-row</height>
+                <orientation>horizontal</orientation>
+                <itemgap>8</itemgap>
+                <control type="button" id="600"><width>120</width><height>60</height><label>|&lt;</label><onclick>PVR.EpgGridControl(FirstProgramme)</onclick></control>
+                <control type="button" id="601"><width>120</width><height>60</height><label>&lt;&lt;</label><onclick>PVR.EpgGridControl(-12)</onclick></control>
+                <control type="button" id="602"><width>120</width><height>60</height><label>$LOCALIZE[19070]</label><onclick>PVR.EpgGridControl(CurrentProgramme)</onclick></control>
+                <control type="button" id="603"><width>120</width><height>60</height><label>&gt;&gt;</label><onclick>PVR.EpgGridControl(+12)</onclick></control>
+                <control type="button" id="604"><width>120</width><height>60</height><label>&gt;|</label><onclick>PVR.EpgGridControl(LastProgramme)</onclick></control>
+                <control type="button" id="605"><width>120</width><height>60</height><label>$LOCALIZE[31097]</label><onclick>PVR.EpgGridControl(SelectDate)</onclick></control>
+                <control type="button" id="70040"><width>120</width><height>60</height><label>$LOCALIZE[19148] -</label><onclick>PVR.EpgGridControl(FirstChannel)</onclick></control>
+                <control type="button" id="70041"><width>120</width><height>60</height><label>$LOCALIZE[19070]</label><visible>PVR.IsPlayingTV | PVR.IsPlayingRadio | PVR.IsPlayingEpgTag</visible><onclick>PVR.EpgGridControl(PlayingChannel)</onclick></control>
+                <control type="button" id="70042"><width>120</width><height>60</height><label>$LOCALIZE[19148] +</label><onclick>PVR.EpgGridControl(LastChannel)</onclick></control>
+                <control type="button" id="70043"><width>120</width><height>60</height><label>$LOCALIZE[19141] -</label><onclick>PVR.EpgGridControl(PreviousGroup)</onclick></control>
+                <control type="button" id="70044"><width>120</width><height>60</height><label>$LOCALIZE[19141] +</label><onclick>PVR.EpgGridControl(NextGroup)</onclick></control>
+                <control type="button" id="70045"><width>120</width><height>60</height><label>$LOCALIZE[19141]</label><onclick>PVR.EpgGridControl(SelectGroup)</onclick></control>
+            </control>
+        </control>
+        <include>DebugGrid</include>
+        <control type="label">
+            <include>DialogID</include>
+            <label>DialogPVRGuideControls.xml</label>
+        </control>
+    </controls>
+</window>

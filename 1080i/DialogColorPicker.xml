@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+    <defaultcontrol always="true">6</defaultcontrol>
+    <include>fadeInOut</include>
+    <controls>
+        <include>globalBackground</include>
+        <control type="group">
+            <posx>col-4-begin</posx>
+            <posy>row-3-begin</posy>
+            <include>modalDialogInOutVertical</include>
+            <control type="image">
+                <posx>0</posx>
+                <posy>0</posy>
+                <width>18-col</width>
+                <height>2-row</height>
+                <texture>colors/white.png</texture>
+                <colordiffuse>highlight</colordiffuse>
+                <aspectratio>stretch</aspectratio>
+            </control>
+            <control type="image">
+                <posx>0</posx>
+                <posy>2-row</posy>
+                <width>18-col</width>
+                <height>20-row</height>
+                <texture>colors/black.png</texture>
+                <colordiffuse>overlay</colordiffuse>
+                <aspectratio>stretch</aspectratio>
+            </control>
+            <control type="label" id="1">
+                <posx>24</posx>
+                <posy>0</posy>
+                <width>18-col-gutter</width>
+                <height>2-row</height>
+                <aligny>center</aligny>
+                <font>dialogTitle</font>
+                <textcolor>textActive</textcolor>
+                <label>$LOCALIZE[737]</label>
+            </control>
+            <control type="panel" id="6">
+                <posx>24</posx>
+                <posy>3-row</posy>
+                <width>14-col</width>
+                <height>17-row</height>
+                <onright>61</onright>
+                <onleft>7</onleft>
+                <onup>6</onup>
+                <ondown>6</ondown>
+                <pagecontrol>61</pagecontrol>
+                <orientation>vertical</orientation>
+                <itemlayout width="2-col" height="2-row">
+                    <control type="image">
+                        <posx>8</posx>
+                        <posy>8</posy>
+                        <width>120</width>
+                        <height>54</height>
+                        <texture>colors/white.png</texture>
+                        <colordiffuse>$INFO[ListItem.Label2]</colordiffuse>
+                        <aspectratio>stretch</aspectratio>
+                    </control>
+                </itemlayout>
+                <focusedlayout width="2-col" height="2-row">
+                    <control type="image">
+                        <posx>0</posx>
+                        <posy>0</posy>
+                        <width>136</width>
+                        <height>70</height>
+                        <texture>colors/white.png</texture>
+                        <colordiffuse>highlight</colordiffuse>
+                        <aspectratio>stretch</aspectratio>
+                    </control>
+                    <control type="image">
+                        <posx>8</posx>
+                        <posy>8</posy>
+                        <width>120</width>
+                        <height>54</height>
+                        <texture>colors/white.png</texture>
+                        <colordiffuse>$INFO[ListItem.Label2]</colordiffuse>
+                        <aspectratio>stretch</aspectratio>
+                    </control>
+                </focusedlayout>
+            </control>
+            <control type="scrollbar" id="61">
+                <posx>14-col</posx>
+                <posy>3-row</posy>
+                <height>17-row</height>
+                <onleft>6</onleft>
+                <onright>7</onright>
+                <orientation>vertical</orientation>
+            </control>
+            <control type="button" id="7">
+                <posx>15-col</posx>
+                <posy>3-row</posy>
+                <width>2-col</width>
+                <height>2-row</height>
+                <onleft>61</onleft>
+                <onright>6</onright>
+                <label>$LOCALIZE[222]</label>
+                <font>itemTitle</font>
+                <textcolor>textActive</textcolor>
+                <focusedcolor>black</focusedcolor>
+                <texturefocus>colors/white.png</texturefocus>
+                <texturenofocus>colors/black.png</texturenofocus>
+            </control>
+            <control type="label">
+                <posx>24</posx>
+                <posy>20-row</posy>
+                <width>14-col</width>
+                <height>1-row</height>
+                <font>regular</font>
+                <textcolor>textActive</textcolor>
+                <label>$INFO[Container(6).ListItem.Label] $INFO[Container(6).ListItem.Label2,#,]</label>
+            </control>
+        </control>
+        <include>DebugGrid</include>
+        <control type="label">
+            <include>DialogID</include>
+            <label>DialogColorPicker.xml</label>
+        </control>
+    </controls>
+</window>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+    <defaultcontrol always="true">9000</defaultcontrol>
+    <include>fadeInOut</include>
+    <controls>
+        <include>globalBackground</include>
+        <control type="group">
+            <posx>col-2-begin</posx>
+            <posy>row-2-begin</posy>
+            <control type="label">
+                <posx>0</posx>
+                <posy>0</posy>
+                <width>22-col</width>
+                <height>2-row</height>
+                <font>pageTitle</font>
+                <textcolor>textActive</textcolor>
+                <label>$LOCALIZE[179]</label>
+            </control>
+            <control type="textbox" id="9000">
+                <posx>0</posx>
+                <posy>3-row</posy>
+                <width>22-col</width>
+                <height>21-row</height>
+                <font>textbox</font>
+                <textcolor>textActive</textcolor>
+                <label>$INFO[RDS.Band,[B]$LOCALIZE[29901]:[/B] ,[CR]]$INFO[RDS.Artist,[B]$LOCALIZE[557]:[/B] ,[CR]]$INFO[RDS.Title,[B]$LOCALIZE[556]:[/B] ,[CR]]$INFO[RDS.Album,[B]$LOCALIZE[558]:[/B] ,[CR]]$INFO[RDS.Comment,[B]$LOCALIZE[569]:[/B] ,[CR][CR]]$INFO[RDS.ProgNow,[B]$LOCALIZE[19030]:[/B] ,[CR]]$INFO[RDS.ProgNext,[B]$LOCALIZE[19031]:[/B] ,[CR]]$INFO[RDS.ProgStation,[B]$LOCALIZE[19148]:[/B] ,[CR]]$INFO[RDS.InfoNews,[B]$LOCALIZE[29916]:[/B] ,[CR]]$INFO[RDS.InfoWeather,[B]$LOCALIZE[400]:[/B] ,[CR]]</label>
+                <autoscroll delay="5000" time="3000" repeat="10000">true</autoscroll>
+            </control>
+        </control>
+        <include>DebugGrid</include>
+        <control type="label">
+            <include>DialogID</include>
+            <label>DialogPVRRadioRDSInfo.xml</label>
+        </control>
+    </controls>
+</window>

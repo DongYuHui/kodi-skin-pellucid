@@ -2,7 +2,7 @@
 <window>
 	<views>10</views>
 	<defaultcontrol always="true">9999</defaultcontrol>
-	<onload condition="Skin.hassetting(stopVideoOnMenu) + !Player.HasAudio">PlayerControl(stop)</onload>
+	<onload condition="Skin.HasSetting(stopVideoOnMenu) + !Player.HasAudio">PlayerControl(stop)</onload>
 	<onload>Skin.SetString(recentitems,video)</onload>
 	<animation type="windowClose">
 		<effect type="fade" start="100" end="0" time="300"/>
