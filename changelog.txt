@@ -1,4 +1,7 @@
 **Changelog**
+[V4.0.0]
+- Support for Kodi 21
+
 [V3.1.0]
 - Skin shortcuts removed
 
