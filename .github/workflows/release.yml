@@ -1,0 +1,91 @@
+name: Release skin package
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Package and publish release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out release tag
+        uses: actions/checkout@v4
+
+      - name: Package Kodi skin
+        id: package
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          addon_id="$(sed -n 's/.*<addon id="\([^"]*\)".*/\1/p' addon.xml | head -n 1)"
+          addon_version="$(sed -n 's/.*<addon id="[^"]*" version="\([^"]*\)".*/\1/p' addon.xml | head -n 1)"
+          tag_version="${GITHUB_REF_NAME#v}"
+
+          test -n "$addon_id"
+          test -n "$addon_version"
+          test "$addon_version" = "$tag_version"
+
+          archive="${addon_id}-${addon_version}.zip"
+          mkdir -p "dist" "package/${addon_id}"
+
+          # Build only from committed files at the tagged revision. GitHub workflow
+          # files are intentionally excluded from the Kodi installation archive.
+          git archive --format=tar "$GITHUB_SHA" \
+            | tar --extract --file=- --directory="package/${addon_id}" --exclude=.github
+          (
+            cd package
+            zip --quiet --recurse-paths "../dist/${archive}" "${addon_id}"
+          )
+
+          echo "archive=dist/${archive}" >> "$GITHUB_OUTPUT"
+
+      - name: Extract release notes from changelog
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          version="${GITHUB_REF_NAME#v}"
+          notes_file="release-notes.md"
+
+          if [ ! -f CHANGELOG.md ]; then
+            echo "::error::CHANGELOG.md is required to publish a release."
+            exit 1
+          fi
+
+          # Match the version heading by version number only. Text such as a
+          # date may follow the heading; extract until the next version heading.
+          awk -v version="$version" '
+            index($0, "## [" version "]") == 1 {
+              found = 1
+              next
+            }
+            found && /^## \[[0-9]+(\.[0-9]+)*\] - / { exit }
+            found { print }
+            END {
+              if (!found) {
+                exit 2
+              }
+            }
+          ' CHANGELOG.md > "$notes_file" || {
+            echo "::error::No CHANGELOG.md section found for version ${version}. Expected: ## [${version}]"
+            exit 1
+          }
+
+          if ! grep --quiet '[^[:space:]]' "$notes_file"; then
+            echo "::error::CHANGELOG.md section for ${version} has no release notes."
+            exit 1
+          fi
+
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" "${{ steps.package.outputs.archive }}" \
+            --title "$GITHUB_REF_NAME" \
+            --notes-file release-notes.md

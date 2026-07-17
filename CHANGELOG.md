@@ -1,13 +1,24 @@
-**Changelog**
-[V4.0.0]
-- Support for Kodi 21
+# Changelog
+
+本文件记录 Pellucid 皮肤每个发布版本的用户可见变更。
+
+发布 `vX.Y.Z` 前，请添加对应的 `## [X.Y.Z]` 标题及其说明；标题后可附加日期。发布工作流会将该标题后的内容作为 GitHub Release 文案，直到遇到下一个版本标题为止。
+
+## [Unreleased]
+
+## [4.0.1] - 2026.07.17
+
+- Change back action in Movies and TVShows
+
+## [4.0.0] - 2026.07.10
+
+- Support for Kodi 21 Omega
 
 [V3.1.0]
 - Skin shortcuts removed
 
 [V3.0.0]
 - Updated for Kodi Matrix
-
 
 [V2.0.1]
 *** Shout out to Loggio for a whole bunch of tweaks. Thanks! ***
@@ -157,4 +168,3 @@
 - [UPDATED] MyMusicPlaylistEditor.xml
 - [REMOVED] Unused images
 - Minor fixes and bug squashing (thanks Ronie!)
-
